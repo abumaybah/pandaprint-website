@@ -330,29 +330,44 @@ sed -i 's/\r$//' /root/server-setup.sh
 
 ### Шаг 3. Залить код и `.env`
 
-Git-репозитория пока нет, поэтому переносим архивом. `tar` и `scp` встроены в Windows.
-
-**[Windows]**:
-
-```powershell
-cd D:\pandaprint\pandaprint
-tar -czf pandaprint.tgz --exclude=node_modules --exclude=dist --exclude=data --exclude=logs --exclude=.env backend frontend
-scp pandaprint.tgz backend\.env root@<IP>:/root/
-del pandaprint.tgz
-```
-
-Архив около 6,5 МБ — без `node_modules` и сборки, они соберутся на сервере. `.env` в архив не входит намеренно и едет отдельным файлом: так его точно не забудешь и он не попадёт в копии архива.
+Код живёт в репозитории `https://github.com/abumaybah/pandaprint-website` — на сервер он приезжает через `git clone`. Репозиторий публичный, авторизация для клонирования не нужна.
 
 **[сервер]**:
 
 ```bash
-tar -xzf /root/pandaprint.tgz -C /var/www/pandaprint
-mv /root/.env /var/www/pandaprint/backend/.env
-chmod 600 /var/www/pandaprint/backend/.env
-rm /root/pandaprint.tgz
+git clone https://github.com/abumaybah/pandaprint-website.git /var/www/pandaprint
 ```
 
-`chmod 600` — файл с паролями читает только root.
+`.env` в репозитории нет и быть не должно (он в `.gitignore`) — он едет отдельно, по `scp`.
+
+**[Windows]**:
+
+```powershell
+scp D:\pandaprint\pandaprint\backend\.env root@<IP>:/var/www/pandaprint/backend/.env
+```
+
+**[сервер]** — файл с паролями должен читать только root:
+
+```bash
+chmod 600 /var/www/pandaprint/backend/.env
+```
+
+<details>
+<summary>Если сервер уже развёрнут из архива (без git) — переключить его на git один раз</summary>
+
+Так было сделано 2026-09-14: код разложен через `tar`, папки `.git` на сервере нет. Чтобы дальше обновляться через `git pull`, нужно один раз привязать существующую папку к репозиторию:
+
+```bash
+cd /var/www/pandaprint
+git init -b main
+git remote add origin https://github.com/abumaybah/pandaprint-website.git
+git fetch origin
+git reset --hard origin/main
+```
+
+`reset --hard` приводит **отслеживаемые** файлы в точное соответствие с репозиторием. `.env`, `data/`, `node_modules/`, `dist/` и `logs/` он не трогает — они в `.gitignore`, git их не видит.
+
+</details>
 
 ### Шаг 4. Собрать и запустить
 
@@ -432,23 +447,32 @@ certbot --nginx -d xn--80aalrwdiejw.shop -d www.xn--80aalrwdiejw.shop
 
 > **Если меняли `style.css` или `script.js` — поднимите версию в ссылках.** Nginx отдаёт их с кэшем на 30 дней, и без этого посетители (и вы сами на телефоне) будут видеть старую версию. В `index.html` и `privacy.html` найдите `style.css?v=…` и `script.js?v=…` и поставьте новую дату, например `?v=20260920`. Браузер увидит другой URL и заберёт свежий файл. Сам `index.html` долго не кэшируется, поэтому правки в HTML доезжают сразу.
 
-**[Windows]** — тот же архив, что в шаге 3 (без `.env`, он уже на сервере):
+Правки делаются локально, коммитятся и пушатся в GitHub, сервер их забирает.
+
+**[Windows]** — закоммитить и отправить:
 
 ```powershell
 cd D:\pandaprint\pandaprint
-tar -czf pandaprint.tgz --exclude=node_modules --exclude=dist --exclude=data --exclude=logs --exclude=.env backend frontend
-scp pandaprint.tgz root@<IP>:/root/
-del pandaprint.tgz
+git add -A
+git commit -m "Что поменяли"
+git push
 ```
 
-**[сервер]**:
+**[сервер]** — если менялся только фронтенд (`frontend/`), достаточно одной команды, Nginx подхватит файлы сразу:
 
 ```bash
-tar -xzf /root/pandaprint.tgz -C /var/www/pandaprint && rm /root/pandaprint.tgz
-cd /var/www/pandaprint/backend && npm ci && npm run build && pm2 restart pandaprint-api
+cd /var/www/pandaprint && git pull
 ```
 
-Каталог при рестарте поднимется с диска мгновенно. С git это превратится в `git pull` — но это уже отдельный разговор.
+Если менялся бэкенд (`backend/src/`, `package.json`) — ещё пересобрать и перезапустить:
+
+```bash
+cd /var/www/pandaprint && git pull && cd backend && npm ci && npm run build && pm2 restart pandaprint-api
+```
+
+Каталог при рестарте поднимется с диска мгновенно.
+
+Заглянуть, что именно отличается между сервером и репозиторием, если сомневаетесь: `git status` и `git log --oneline -5` на сервере.
 
 ---
 
