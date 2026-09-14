@@ -1,0 +1,39 @@
+{
+  "name": "pandaprint-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Бэкенд Panda Print: форма обратной связи + кэшированный каталог с Яндекс.Маркета",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "probe": "tsx scripts/probe-market.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "dev:site": "tsx scripts/dev-static.ts",
+    "analyze": "tsx scripts/analyze.ts",
+    "mail:test": "tsx scripts/mail-test.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "node-cron": "^4.6.0",
+    "nodemailer": "^9.0.6",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.0",
+    "@types/nodemailer": "^8.0.1",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}

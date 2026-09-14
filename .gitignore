@@ -1,0 +1,23 @@
+# Зависимости и сборка
+node_modules/
+dist/
+
+# Секреты — никогда в репозиторий
+.env
+.env.local
+.env.*.local
+!backend/.env.example
+
+# Кэш каталога и логи создаются на сервере
+backend/data/
+backend/logs/
+*.log
+
+# Архив старой версии на Vercel (см. _legacy/README.md)
+_legacy/
+
+# Служебное
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

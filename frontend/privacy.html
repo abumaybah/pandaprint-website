@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Политика конфиденциальности — Panda Print</title>
+		<meta name="description" content="Какие данные собирает сайт Panda Print через форму обратной связи, зачем и как они обрабатываются." />
+		<meta name="robots" content="noindex, follow" />
+		<link rel="icon" type="image/png" href="img/favicon.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="style.css?v=20260915" />
+		<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+		<style>
+			/*
+				Стили только этой страницы. Всё общее — шапка, подвал, кнопки, токены —
+				берётся из style.css, чтобы страница выглядела частью сайта, а не приложением к нему.
+			*/
+
+			/* Шапка на сайте фиксированная — отступ, чтобы заголовок не уехал под неё. */
+			.legal-page {
+				padding-top: 150px;
+			}
+
+			.legal {
+				max-width: 820px;
+			}
+
+			.legal__meta {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 10px 18px;
+				margin: 28px 0 32px;
+				color: var(--muted);
+				font-size: 13px;
+			}
+
+			.legal__badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 6px 12px;
+				border-radius: 999px;
+				border: 1.5px solid var(--border);
+				background: var(--surface);
+				color: var(--text);
+				font-size: 12px;
+				font-weight: 600;
+			}
+			.legal__badge i,
+			.legal__badge svg {
+				width: 14px;
+				height: 14px;
+				color: var(--violet);
+			}
+
+			/* --- Оглавление: чипы как у категорий в каталоге --- */
+			.legal__toc {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+				margin-bottom: 28px;
+			}
+			.legal__toc a {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				padding: 8px 14px;
+				border-radius: 999px;
+				border: 1.5px solid var(--border);
+				background: var(--surface);
+				color: var(--muted);
+				font-size: 13px;
+				text-decoration: none;
+				backdrop-filter: blur(10px);
+				transition:
+					border-color 0.2s var(--ease),
+					color 0.2s var(--ease);
+			}
+			.legal__toc a:hover {
+				border-color: var(--violet-soft);
+				color: var(--text);
+			}
+			.legal__toc a span {
+				color: var(--violet);
+				font-weight: 700;
+				font-size: 11px;
+			}
+
+			/* --- Текст в стеклянной карточке, как остальные блоки сайта --- */
+			.legal__card {
+				background: var(--surface);
+				border: 1px solid var(--border);
+				border-radius: var(--radius-lg);
+				padding: 40px 44px;
+				backdrop-filter: blur(12px);
+			}
+
+			.legal__intro {
+				font-size: 16px;
+				line-height: 1.7;
+				color: var(--text);
+				margin: 0 0 8px;
+			}
+
+			.legal__section {
+				padding: 32px 0;
+				border-top: 1px solid var(--border);
+				/* Чтобы при переходе по оглавлению заголовок не прятался под шапкой. */
+				scroll-margin-top: 110px;
+			}
+			.legal__section:first-of-type {
+				border-top: none;
+				padding-top: 24px;
+			}
+			.legal__section:last-of-type {
+				padding-bottom: 8px;
+			}
+
+			.legal__section h2 {
+				display: flex;
+				align-items: baseline;
+				gap: 14px;
+				font-family: var(--font-display);
+				font-size: 18px;
+				font-weight: 700;
+				margin: 0 0 14px;
+			}
+
+			/* Номер секции — как «01, 02, 03» в таймлайне «Как оформить заказ» */
+			.legal__num {
+				flex-shrink: 0;
+				font-size: 12px;
+				font-weight: 800;
+				letter-spacing: 0.08em;
+				background: linear-gradient(90deg, var(--violet), var(--pink));
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+
+			.legal p,
+			.legal li {
+				color: var(--muted);
+				font-size: 14.5px;
+				line-height: 1.75;
+			}
+			.legal__section p {
+				margin: 0 0 12px;
+			}
+			.legal__section p:last-child {
+				margin-bottom: 0;
+			}
+			.legal ul {
+				margin: 0 0 12px;
+				padding-left: 0;
+				list-style: none;
+			}
+			.legal li {
+				position: relative;
+				padding-left: 22px;
+				margin-bottom: 8px;
+			}
+			.legal li::before {
+				content: "";
+				position: absolute;
+				left: 4px;
+				top: 0.72em;
+				width: 6px;
+				height: 6px;
+				border-radius: 50%;
+				background: linear-gradient(90deg, var(--violet), var(--pink));
+			}
+			.legal strong {
+				color: var(--text);
+				font-weight: 600;
+			}
+			.legal__card a {
+				color: var(--violet);
+				text-decoration: underline;
+				text-underline-offset: 3px;
+				text-decoration-color: var(--violet-soft);
+			}
+			.legal__card a:hover {
+				text-decoration-color: var(--violet);
+			}
+
+			/* --- Каналы связи в первой секции: карточками, а не списком --- */
+			.legal__channels {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 10px;
+				margin-top: 16px;
+			}
+			.legal__channel {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 12px 14px;
+				border-radius: var(--radius-sm);
+				border: 1px solid var(--border);
+				background: rgba(255, 255, 255, 0.03);
+				text-decoration: none !important;
+				color: var(--text) !important;
+				font-size: 14px;
+				transition: border-color 0.2s var(--ease);
+			}
+			.legal__channel:hover {
+				border-color: var(--violet-soft);
+			}
+			.legal__channel i,
+			.legal__channel svg {
+				width: 18px;
+				height: 18px;
+				color: var(--violet);
+				flex-shrink: 0;
+			}
+			.legal__channel small {
+				display: block;
+				color: var(--muted);
+				font-size: 12px;
+			}
+
+			/* --- Подвал документа: обратная связь --- */
+			.legal__outro {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				gap: 16px;
+				margin-top: 28px;
+				padding: 22px 26px;
+				border-radius: var(--radius-md);
+				border: 1.5px solid var(--border);
+				background: var(--surface);
+			}
+			.legal__outro p {
+				margin: 0;
+				font-size: 14px;
+			}
+
+			@media (max-width: 640px) {
+				.legal-page {
+					padding-top: 110px;
+				}
+				.legal__card {
+					padding: 24px 20px;
+					border-radius: var(--radius-md);
+				}
+				.legal__section {
+					padding: 26px 0;
+				}
+				.legal__section h2 {
+					font-size: 16px;
+				}
+				.legal__outro {
+					padding: 18px;
+				}
+				.legal__outro .btn {
+					width: 100%;
+					justify-content: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grain" aria-hidden="true"></div>
+		<div class="bg-decor" aria-hidden="true">
+			<span class="bg-decor__orb bg-decor__orb--violet"></span>
+			<span class="bg-decor__orb bg-decor__orb--pink"></span>
+			<span class="bg-decor__orb bg-decor__orb--blue"></span>
+		</div>
+
+		<!-- ============ ШАПКА — та же, что на главной ============ -->
+		<header class="header on-ink">
+			<div class="header__inner container">
+				<a href="index.html" class="header__logo">
+					<span class="header__logo-text">
+						<span class="header__logo-line1">panda</span>
+						<span class="header__logo-line2">print</span>
+					</span>
+				</a>
+				<nav class="header__nav">
+					<a class="header__link" href="index.html#catalog">Каталог</a>
+					<a class="header__link" href="index.html#reviews">Отзывы</a>
+					<a class="header__link" href="index.html#order">Как заказать</a>
+					<a class="header__link" href="index.html#about">О бренде</a>
+					<a class="header__link" href="index.html#contact">Вопросы</a>
+				</nav>
+				<a href="index.html#catalog" class="btn btn--primary header__cta">В каталог</a>
+				<button id="burgerBtn" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+					<span class="burger__line"></span>
+					<span class="burger__line"></span>
+					<span class="burger__line"></span>
+				</button>
+			</div>
+			<nav id="mobileNav" class="mobile-nav">
+				<a class="mobile-nav__link" href="index.html#catalog">Каталог</a>
+				<a class="mobile-nav__link" href="index.html#reviews">Отзывы</a>
+				<a class="mobile-nav__link" href="index.html#order">Как заказать</a>
+				<a class="mobile-nav__link" href="index.html#about">О бренде</a>
+				<a class="mobile-nav__link" href="index.html#contact">Вопросы</a>
+				<a href="index.html#catalog" class="btn btn--primary mobile-nav__cta">В каталог</a>
+			</nav>
+		</header>
+
+		<!-- ============ ДОКУМЕНТ ============ -->
+		<main class="section on-ink legal-page">
+			<span class="section-orb section-orb--violet" style="width: 380px; height: 380px; top: 40px; left: -120px" aria-hidden="true"></span>
+
+			<div class="container">
+				<div class="legal">
+					<p class="eyebrow">документы</p>
+					<h1 class="section-title aos-animate">Политика конфиденциальности</h1>
+
+					<div class="legal__meta">
+						<span class="legal__badge"><i data-lucide="calendar"></i>Действует с 30 августа 2026</span>
+						<span class="legal__badge"><i data-lucide="scale"></i>152-ФЗ «О персональных данных»</span>
+					</div>
+
+					<nav class="legal__toc" aria-label="Содержание">
+						<a href="#who"><span>01</span>Кто обрабатывает</a>
+						<a href="#what"><span>02</span>Какие данные</a>
+						<a href="#why"><span>03</span>Зачем</a>
+						<a href="#how"><span>04</span>Как технически</a>
+						<a href="#retention"><span>05</span>Сроки хранения</a>
+						<a href="#rights"><span>06</span>Ваши права</a>
+						<a href="#security"><span>07</span>Безопасность</a>
+					</nav>
+
+					<article class="legal__card">
+						<p class="legal__intro">
+							Эта страница объясняет, какие данные собирает сайт <strong>Panda Print</strong> (далее — «сайт», «мы»), зачем и что с ними происходит дальше. Мы обрабатываем персональные данные в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».
+						</p>
+
+						<section class="legal__section" id="who">
+							<h2><span class="legal__num">01</span>Кто обрабатывает данные</h2>
+							<p>Обработку данных, полученных через форму обратной связи, ведёт Panda Print. Связаться по вопросам, касающимся персональных данных, можно любым из способов:</p>
+							<div class="legal__channels">
+								<a class="legal__channel" href="https://t.me/Panda_Print_MSK" target="_blank" rel="noopener noreferrer">
+									<i data-lucide="send"></i>
+									<span>@Panda_Print_MSK<small>Telegram</small></span>
+								</a>
+								<a class="legal__channel" href="mailto:Razrslip@yandex.ru">
+									<i data-lucide="mail"></i>
+									<span>Razrslip@yandex.ru<small>E-mail</small></span>
+								</a>
+							</div>
+						</section>
+
+						<section class="legal__section" id="what">
+							<h2><span class="legal__num">02</span>Какие данные мы собираем</h2>
+							<p>Через форму обратной связи на сайте мы получаем только то, что вы сами в неё вводите:</p>
+							<ul>
+								<li>имя;</li>
+								<li>e-mail или номер телефона — то, что вы укажете как контакт для ответа;</li>
+								<li>текст вашего сообщения.</li>
+							</ul>
+							<p>Сайт не использует куки для отслеживания и на момент публикации этой политики не подключает счётчики аналитики. Если это изменится — мы обновим этот раздел.</p>
+						</section>
+
+						<section class="legal__section" id="why">
+							<h2><span class="legal__num">03</span>Зачем мы их обрабатываем</h2>
+							<p>Единственная цель — ответить на ваше обращение: уточнить детали заказа, проконсультировать по товару или помочь с вопросом, который вы задали через форму. Мы не используем эти данные для рассылок и не передаём их третьим лицам для маркетинга.</p>
+						</section>
+
+						<section class="legal__section" id="how">
+							<h2><span class="legal__num">04</span>Как технически обрабатывается заявка</h2>
+							<p>Когда вы отправляете форму, данные уходят одним письмом на почтовый ящик на <strong>Яндекс Почте</strong> — это единственное место, где хранится ваше обращение. Отдельной базы данных с заявками сайт не ведёт: если заявку не сохранить вручную, она остаётся только в письме.</p>
+						</section>
+
+						<section class="legal__section" id="retention">
+							<h2><span class="legal__num">05</span>Сроки хранения</h2>
+							<p>Переписка хранится в почтовом ящике до тех пор, пока это нужно для решения вашего вопроса, либо до вашего запроса на удаление.</p>
+						</section>
+
+						<section class="legal__section" id="rights">
+							<h2><span class="legal__num">06</span>Ваши права</h2>
+							<p>Вы в любой момент можете:</p>
+							<ul>
+								<li>запросить, какие данные о вас у нас есть;</li>
+								<li>попросить их исправить, если они неверны;</li>
+								<li>попросить их удалить;</li>
+								<li>отозвать согласие на обработку — это не повлияет на уже выполненные заказы.</li>
+							</ul>
+							<p>Для этого достаточно написать в любой из каналов связи, указанных выше.</p>
+						</section>
+
+						<section class="legal__section" id="security">
+							<h2><span class="legal__num">07</span>Безопасность</h2>
+							<p>Форма на сайте защищена от автоматических атак и подстановки лишних данных (в том числе на уровне проверки на сервере — не только в браузере), а письма отправляются по защищённому соединению (SMTP/TLS через Яндекс Почту).</p>
+						</section>
+					</article>
+
+					<div class="legal__outro">
+						<p>Остались вопросы по обработке данных? Напишите нам — ответим тем же способом, каким вы обратились.</p>
+						<a href="index.html#contact" class="btn btn--primary">
+							Задать вопрос
+							<i data-lucide="arrow-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- ============ ПОДВАЛ — тот же, что на главной ============ -->
+		<footer class="footer on-ink">
+			<div class="footer__top-row container">
+				<div class="footer__brand">
+					<span class="footer__logo-text">
+						<span class="footer__logo-line1">panda</span>
+						<span class="footer__logo-line2">print</span>
+					</span>
+					<p class="footer__desc">© 2021 Panda Print. Все права защищены.</p>
+				</div>
+				<nav class="footer__nav">
+					<a href="https://market.yandex.ru/cc/7iJK2f" target="_blank" rel="noopener noreferrer" class="footer__nav-link footer__nav-link--market">
+						<img src="img/yandex-market.svg" alt="" class="footer__market-icon" />
+						Магазин на Яндекс.Маркете
+					</a>
+					<a href="index.html#catalog">Каталог</a>
+					<a href="index.html#contact">Контакты</a>
+					<a href="privacy.html" aria-current="page">Политика конфиденциальности</a>
+				</nav>
+			</div>
+			<div class="footer__bottom-row container">
+				<span>Актуальные цены и наличие смотрите на Яндекс.Маркете</span>
+			</div>
+		</footer>
+
+		<button id="backToTop" class="back-to-top" aria-label="Наверх">
+			<i data-lucide="arrow-up"></i>
+		</button>
+
+		<script>
+			// Страница не грузит script.js целиком — он бы пошёл за каталогом,
+			// которого здесь нет. Нужны только бургер-меню и кнопка «наверх».
+
+			(function setupBurgerMenu() {
+				const burgerBtn = document.getElementById('burgerBtn');
+				const mobileNav = document.getElementById('mobileNav');
+				if (!burgerBtn || !mobileNav) return;
+
+				const closeMenu = () => {
+					burgerBtn.setAttribute('aria-expanded', 'false');
+					mobileNav.classList.remove('is-open');
+					document.body.style.overflow = '';
+				};
+
+				burgerBtn.addEventListener('click', () => {
+					const isOpen = mobileNav.classList.contains('is-open');
+					if (isOpen) {
+						closeMenu();
+					} else {
+						burgerBtn.setAttribute('aria-expanded', 'true');
+						mobileNav.classList.add('is-open');
+						document.body.style.overflow = 'hidden';
+					}
+				});
+
+				mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+				window.addEventListener('resize', () => {
+					if (window.innerWidth > 860) closeMenu();
+				});
+			})();
+
+			(function setupBackToTop() {
+				const btn = document.getElementById('backToTop');
+				if (!btn) return;
+
+				const toggle = () => btn.classList.toggle('is-visible', window.scrollY > 480);
+				window.addEventListener('scroll', toggle, { passive: true });
+				toggle();
+
+				btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+			})();
+
+			if (window.lucide) {
+				lucide.createIcons();
+			} else {
+				document.addEventListener('DOMContentLoaded', () => {
+					if (window.lucide) lucide.createIcons();
+				});
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Panda Print — Вещи, которые хочется себе</title>
+		<meta name="description" content="Panda Print: кейкапы, антистресс-мелочи и клавиатуры. Чёрное и белое. Мягкое и быстрое." />
+		<link rel="icon" type="image/png" href="img/favicon.png" />
+
+		<!--
+			OG-теги — карточка превью, когда ссылку на сайт кидают в Telegram/VK/WhatsApp.
+			og:image требует ПОЛНЫЙ URL, относительный путь не сработает — соцсети скачивают
+			картинку напрямую своими серверами, без знания текущего домена страницы.
+
+			Домен указан в punycode (xn--80aalrwdiejw.shop = пандапринт.shop) намеренно:
+			это единственная форма, которую гарантированно понимают все краулеры соцсетей.
+			Кириллицу в URL часть из них обрабатывает некорректно, а браузер пользователю
+			всё равно покажет русское написание. Проверить превью можно только после
+			деплоя — на localhost соцсети до картинки не дотянутся.
+		-->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Panda Print" />
+		<meta property="og:title" content="Panda Print — Вещи, которые хочется себе" />
+		<meta property="og:description" content="Кейкапы, антистресс-мелочи и клавиатуры. Чёрное и белое. Мягкое и быстрое." />
+		<meta property="og:image" content="https://xn--80aalrwdiejw.shop/img/panda-dif.png" />
+		<meta property="og:url" content="https://xn--80aalrwdiejw.shop/" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+		<link rel="stylesheet" href="https://unpkg.com/swiper@14.2.0/swiper-bundle.min.css" />
+		<link rel="stylesheet" href="style.css?v=20260915" />
+		<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+	</head>
+	<body>
+		<div class="grain" aria-hidden="true"></div>
+
+		<!-- Декоративный фон: цветные пятна, фиксировано относительно экрана -->
+		<div class="bg-decor" aria-hidden="true">
+			<span class="bg-decor__orb bg-decor__orb--violet"></span>
+			<span class="bg-decor__orb bg-decor__orb--pink"></span>
+			<span class="bg-decor__orb bg-decor__orb--blue"></span>
+			<span class="bg-decor__orb bg-decor__orb--yellow"></span>
+			<span class="bg-decor__orb bg-decor__orb--orange"></span>
+		</div>
+
+		<!-- ============ ШАПКА ============ -->
+		<header class="header on-ink">
+			<div class="header__inner container">
+				<a href="#top" class="header__logo">
+					<span class="header__logo-text">
+						<span class="header__logo-line1">panda</span>
+						<span class="header__logo-line2">print</span>
+					</span>
+				</a>
+				<nav class="header__nav">
+					<a class="header__link" href="#catalog">Каталог</a>
+					<a class="header__link" href="#reviews">Отзывы</a>
+					<a class="header__link" href="#order">Как заказать</a>
+					<a class="header__link" href="#about">О бренде</a>
+					<a class="header__link" href="#contact">Вопросы</a>
+				</nav>
+				<a href="#catalog" class="btn btn--primary header__cta">В каталог</a>
+				<button id="burgerBtn" class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileNav">
+					<span class="burger__line"></span>
+					<span class="burger__line"></span>
+					<span class="burger__line"></span>
+				</button>
+			</div>
+			<nav id="mobileNav" class="mobile-nav">
+				<a class="mobile-nav__link" href="#catalog">Каталог</a>
+				<a class="mobile-nav__link" href="#reviews">Отзывы</a>
+				<a class="mobile-nav__link" href="#order">Как заказать</a>
+				<a class="mobile-nav__link" href="#about">О бренде</a>
+				<a class="mobile-nav__link" href="#contact">Вопросы</a>
+				<a href="#catalog" class="btn btn--primary mobile-nav__cta">В каталог</a>
+			</nav>
+		</header>
+
+		<!-- ============ HERO ============ -->
+		<section id="top" class="hero on-ink">
+			<div class="hero__inner container">
+				<div class="hero__content">
+					<h1 class="hero__title" data-aos="fade-up">Вещи, которые хочется себе</h1>
+					<p class="hero__subtitle" data-aos="fade-up" data-aos-delay="100">Panda Print — необычные товары для рабочего пространства, дома и повседневной жизни. Выбирай то, что подходит именно тебе.</p>
+					<div class="hero__actions" data-aos="fade-up" data-aos-delay="200">
+						<a href="#catalog" class="btn btn--primary">Смотреть каталог</a>
+						<a href="#about" class="btn btn--ghost">Что внутри бренда?</a>
+					</div>
+				</div>
+				<div class="hero__visual" aria-hidden="true" data-aos="fade-left" data-aos-delay="150"></div>
+			</div>
+		</section>
+
+		<!-- ============ БЕЙДЖИ ПРЕИМУЩЕСТВ ============ -->
+		<section class="badges">
+			<div class="container">
+				<div class="badges__bar" data-aos="fade-up">
+					<div class="badge">
+						<span class="badge__icon"><i data-lucide="clock"></i></span>
+						<span class="badge__text">
+							<span class="badge__title">24/7</span>
+							<span class="badge__sub">на связи по заказу</span>
+						</span>
+					</div>
+					<div class="badge">
+						<span class="badge__icon"><i data-lucide="heart"></i></span>
+						<span class="badge__text">
+							<span class="badge__title">100%</span>
+							<span class="badge__sub">внимания к каждой детали</span>
+						</span>
+					</div>
+					<div class="badge">
+						<span class="badge__icon"><i data-lucide="shield"></i></span>
+						<span class="badge__text">
+							<span class="badge__title">Надёжная</span>
+							<span class="badge__sub">упаковка</span>
+						</span>
+					</div>
+					<div class="badge">
+						<span class="badge__icon"><i data-lucide="zap"></i></span>
+						<span class="badge__text">
+							<span class="badge__title">Быстрая</span>
+							<span class="badge__sub">доставка</span>
+						</span>
+					</div>
+					<div class="badge">
+						<span class="badge__icon"><i data-lucide="star"></i></span>
+						<span class="badge__text">
+							<span class="badge__title">Premium</span>
+							<span class="badge__sub">качество</span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ КАТАЛОГ ============ -->
+		<section id="catalog" class="section on-ink">
+			<span class="section-orb section-orb--violet" style="width: 380px; height: 380px; top: -60px; left: -100px" aria-hidden="true"></span>
+			<div class="container">
+				<div class="section__head-row" data-aos="fade-up">
+					<div>
+						<p class="eyebrow">каталог</p>
+						<h2 class="section-title">Хиты продаж</h2>
+					</div>
+					<a href="https://market.yandex.ru/cc/7iJK2f" target="_blank" rel="noopener noreferrer" class="section__all">
+						<img src="img/yandex-market.svg" alt="" class="btn__market-icon" />
+						Смотреть всё →
+					</a>
+				</div>
+
+				<p id="status" class="catalog__status" data-aos="fade-up">Загружаем товары…</p>
+
+				<div class="catalog__toolbar" data-aos="fade-up">
+					<!--
+						Категории в одну строку с горизонтальной прокруткой.
+						Раньше 18 чипов переносились на четыре ряда и занимали пол-экрана
+						ещё до первого товара.
+					-->
+					<div class="catalog__chips">
+						<div id="filters" class="catalog__filters" role="tablist" aria-label="Категории товаров"></div>
+						<div class="catalog__chips-nav-group">
+							<button class="catalog__chips-nav catalog__chips-nav--prev" type="button" aria-label="Прокрутить категории влево">
+								<i data-lucide="chevron-left"></i>
+							</button>
+							<button class="catalog__chips-nav catalog__chips-nav--next" type="button" aria-label="Прокрутить категории вправо">
+								<i data-lucide="chevron-right"></i>
+							</button>
+						</div>
+					</div>
+
+					<div class="catalog__controls">
+						<div class="catalog__search">
+							<i data-lucide="search" class="catalog__search-icon"></i>
+							<input type="text" id="searchInput" class="catalog__search-input" placeholder="Найти товар…" autocomplete="off" />
+							<button type="button" id="searchClear" class="catalog__search-clear" hidden aria-label="Очистить поиск">
+								<i data-lucide="x"></i>
+							</button>
+						</div>
+
+						<span class="catalog__divider" aria-hidden="true"></span>
+
+						<span id="resultCount" class="catalog__count"></span>
+
+						<div class="catalog__sort" id="sortDropdown">
+							<button class="catalog__sort-btn" id="sortBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="sortList">
+								<i data-lucide="arrow-up-down"></i>
+								<span id="sortLabel">Сначала популярные</span>
+								<i data-lucide="chevron-down" class="catalog__sort-chevron"></i>
+							</button>
+							<ul class="catalog__sort-list" id="sortList" role="listbox" aria-label="Сортировка" tabindex="-1" hidden></ul>
+						</div>
+
+						<button id="resetFilters" class="catalog__reset" type="button" hidden>
+							<i data-lucide="x"></i>
+							Сбросить
+						</button>
+					</div>
+				</div>
+
+				<div id="products" class="catalog__grid"></div>
+				<div id="pagination" class="catalog__pagination" data-aos="fade-up"></div>
+			</div>
+		</section>
+
+		<!-- ============ ОТЗЫВЫ ============ -->
+		<section id="reviews" class="section on-ink">
+			<span class="section-orb section-orb--blue" style="width: 360px; height: 360px; top: -40px; right: -80px" aria-hidden="true"></span>
+			<div class="container">
+				<div class="section__head-row" data-aos="fade-up">
+					<div>
+						<p class="eyebrow">отзывы</p>
+						<h2 class="section-title">Что говорят клиенты</h2>
+					</div>
+				</div>
+
+				<div class="reviews__slider" data-aos="fade-up">
+					<div class="swiper reviews__swiper" id="reviewsSwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Заказывала кейкапы на подарок другу — пришли быстрее, чем ожидала. Качество почти как у оригинальных, только дизайны интереснее. Друг был в восторге.</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Марина К.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Взял клавиатуру для себя на рабочий стол — собирается отлично, звук приятный, не раздражает. Доставили быстрее заявленного срока.</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Данила О.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Купила набор антистресс мелочей в подарок. Упаковали аккуратно, всё доехало целым. Точно буду заказывать ещё.</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Светлана Р.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Долго выбирал антистресс-игрушку на рабочий стол — взял здесь, не пожалел. Приятная на ощупь, не выглядит дешёвой пластмассой.</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Иван П.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Заказала клавиатуру мужу на день рождения — упаковка и коробка выглядят дорого, сам подарок оценил сразу. Спасибо за скорость доставки!</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Кристина В.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+							<div class="swiper-slide review-card">
+								<div class="review-card__stars">★★★★★</div>
+								<p class="review-card__text">Брал кейкапы для игровой клавиатуры — сели идеально, шрифт не стирается уже пару месяцев активного использования. Однозначно рекомендую.</p>
+								<div class="review-card__author">
+									<span class="review-card__name">Артём С.</span>
+									<span class="review-card__source">Яндекс.Маркет</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="reviews__controls">
+						<div class="reviews__dots" id="reviewsDots"></div>
+						<div class="reviews__arrows">
+							<button id="reviewsPrev" class="reviews__arrow" aria-label="Предыдущие отзывы">
+								<i data-lucide="chevron-left"></i>
+							</button>
+							<button id="reviewsNext" class="reviews__arrow" aria-label="Следующие отзывы">
+								<i data-lucide="chevron-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ О БРЕНДЕ ============ -->
+		<section id="about" class="section on-ink">
+			<span class="section-orb section-orb--pink" style="width: 400px; height: 400px; bottom: -80px; left: -100px" aria-hidden="true"></span>
+			<div class="container">
+				<div class="about">
+					<div class="about__content" data-aos="fade-right">
+						<p class="eyebrow">о бренде</p>
+						<h2 class="section-title about__title">Сделано теми, кто сам этим пользуется каждый день.</h2>
+						<p class="about__text">Panda Print придумали за одним столом с кучей кабелей, недопитым чаем и клавиатурой, которая давно просила замену. Никакого маркетингового плана — просто хотелось, чтобы на столе было приятно находиться, а не только эффективно работать.</p>
+						<p class="about__text">Дальше — обычная история: тестировали на себе, выкидывали то, что не понравилось, оставляли то, что хотелось трогать снова. Так и получился каталог — без лишнего, зато с характером.</p>
+						<div class="about__badges">
+							<div class="badge badge--plain">
+								<span class="badge__icon"><i data-lucide="clock"></i></span>
+								<span class="badge__text">
+									<span class="badge__title">24/7</span>
+									<span class="badge__sub">на связи по заказу</span>
+								</span>
+							</div>
+							<div class="badge badge--plain">
+								<span class="badge__icon"><i data-lucide="heart"></i></span>
+								<span class="badge__text">
+									<span class="badge__title">100%</span>
+									<span class="badge__sub">внимания к каждой детали</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="about__visual" data-aos="fade-left">
+						<img src="img/panda-about.png" alt="Panda Print — панда в худи за клавиатурой" class="about__img" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ КАК ОФОРМИТЬ ЗАКАЗ ============ -->
+		<section id="order" class="section on-ink timeline-section">
+			<span class="section-orb section-orb--violet" style="width: 380px; height: 380px; top: -60px; right: -80px" aria-hidden="true"></span>
+			<div class="container">
+				<p class="eyebrow" data-aos="fade-up">как оформить заказ</p>
+				<h2 class="section-title" data-aos="fade-up">Четыре шага — и заказ у тебя.</h2>
+
+				<div class="timeline">
+					<div class="timeline__node" data-aos="fade-up" data-aos-delay="0">
+						<span class="timeline__dot">01</span>
+						<h3>Выбери товар</h3>
+						<p>В каталоге на нашем магазине на Яндекс.Маркете</p>
+					</div>
+					<div class="timeline__node" data-aos="fade-up" data-aos-delay="100">
+						<span class="timeline__dot">02</span>
+						<h3>Перейди на Маркет</h3>
+						<p>Нажми «Купить» на Яндекс.Маркете</p>
+					</div>
+					<div class="timeline__node" data-aos="fade-up" data-aos-delay="200">
+						<span class="timeline__dot">03</span>
+						<h3>Оформи заказ</h3>
+						<p>Выбери способ оплаты и адрес доставки</p>
+					</div>
+					<div class="timeline__node" data-aos="fade-up" data-aos-delay="300">
+						<span class="timeline__dot">04</span>
+						<h3>Получи заказ</h3>
+						<p>Мы быстро соберём и отправим твой заказ</p>
+					</div>
+				</div>
+
+				<a href="https://market.yandex.ru/cc/7iJK2f" target="_blank" rel="noopener noreferrer" class="btn btn--primary timeline__cta" data-aos="zoom-in">
+					<img src="img/yandex-market.svg" alt="" class="btn__market-icon" />
+					Магазин на Яндекс.Маркете
+					<i data-lucide="arrow-right"></i>
+				</a>
+			</div>
+		</section>
+
+		<!-- ============ FAQ + КОНТАКТЫ ============ -->
+		<section id="contact" class="section on-ink">
+			<span class="section-orb section-orb--pink" style="width: 360px; height: 360px; bottom: -60px; right: -100px" aria-hidden="true"></span>
+			<div class="container contact__layout">
+				<div class="faq" data-aos="fade-right">
+					<p class="eyebrow">часто задаваемые вопросы</p>
+					<h2 class="section-title">Часто задаваемые вопросы</h2>
+
+					<div class="faq__list">
+						<div class="faq__item">
+							<button class="faq__question">Какие способы оплаты доступны?<span>+</span></button>
+							<div class="faq__answer"><p>Картой, через СБП или наложенным платёжом прямо на Яндекс.Маркете — выбираешь способ при оформлении заказа.</p></div>
+						</div>
+						<div class="faq__item">
+							<button class="faq__question">Сколько времени занимает доставка?<span>+</span></button>
+							<div class="faq__answer"><p>В среднем 2–4 дня по городу и 5–10 дней по России, в зависимости от твоего региона.</p></div>
+						</div>
+						<div class="faq__item">
+							<button class="faq__question">Доставляете в другие города и страны?<span>+</span></button>
+							<div class="faq__answer"><p>Да, отправляем по всей России и в ближнее зарубежье через Яндекс.Маркет.</p></div>
+						</div>
+						<div class="faq__item">
+							<button class="faq__question">Что делать, если нужно оформить возврат?<span>+</span></button>
+							<div class="faq__answer"><p>Напиши нам в любом из каналов ниже — подскажем, как быстрее всего оформить возврат через Маркет.</p></div>
+						</div>
+						<div class="faq__item">
+							<button class="faq__question">Можно ли отменить заказ?<span>+</span></button>
+							<div class="faq__answer"><p>Да, пока заказ ещё не отправлен — напиши нам, и мы всё отменим.</p></div>
+						</div>
+					</div>
+					<a href="#contactTitle" id="faqMoreLink" class="section__all" style="margin-top: 20px; display: inline-block">Задать свой вопрос →</a>
+				</div>
+
+				<div class="contact" data-aos="fade-left">
+					<p class="eyebrow">остались вопросы?</p>
+					<h2 class="section-title contact__title" id="contactTitle">Напиши нам — мы на связи!</h2>
+
+					<form id="contactForm" class="contact__form">
+						<div class="contact__field">
+							<label class="contact__label" for="name">Ваше имя</label>
+							<input class="contact__input" type="text" id="name" name="name" required />
+						</div>
+						<div class="contact__field">
+							<label class="contact__label" for="contact">E-mail или телефон</label>
+							<input class="contact__input" type="text" id="contact" name="contact" autocomplete="email" required />
+						</div>
+						<div class="contact__field contact__field--full">
+							<label class="contact__label" for="message">Ваш вопрос</label>
+							<textarea class="contact__input contact__input--textarea" id="message" name="message" required></textarea>
+						</div>
+
+						<!--
+							Согласие на обработку персональных данных (152-ФЗ). Не отмечено по умолчанию —
+							ставить галочку заранее нельзя. required дублируется проверкой на бэкенде
+							(см. ContactSchema.consent) — без этого запрос напрямую в API в обход чекбокса прошёл бы.
+						-->
+						<div class="contact__field contact__field--full contact__consent">
+							<label class="contact__consent-label">
+								<input type="checkbox" id="consent" name="consent" required />
+								<span>Согласен(а) на <a href="privacy.html" target="_blank" rel="noopener noreferrer">обработку персональных данных</a></span>
+							</label>
+						</div>
+
+						<!--
+							Honeypot-ловушка. Поле скрыто и недоступно с клавиатуры,
+							живой человек его не заполнит. Боты заполняют формы «вслепую»,
+							и сервер отбрасывает такие заявки. Не удалять.
+						-->
+						<div class="contact__honeypot" aria-hidden="true">
+							<label for="website">Не заполняйте это поле</label>
+							<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+						</div>
+						<button type="submit" class="btn btn--primary contact__submit">
+							Отправить сообщение
+							<i data-lucide="arrow-right"></i>
+						</button>
+						<p id="formNote" class="contact__form-note"></p>
+					</form>
+
+					<ul class="contact__channels">
+						<li class="channel">
+							<span class="channel__label">Telegram</span>
+							<a class="channel__value" href="https://t.me/Panda_Print_MSK" target="_blank" rel="noopener noreferrer">@Panda_Print_MSK</a>
+						</li>
+						<li class="channel">
+							<span class="channel__label">Instagram</span>
+							<a class="channel__value" href="https://instagram.com/pandyash_91" target="_blank" rel="noopener noreferrer">pandyash_91</a>
+						</li>
+						<li class="channel">
+							<span class="channel__label">Email</span>
+							<a class="channel__value" href="mailto:Razrslip@yandex.ru">Razrslip@yandex.ru</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============ ФУТЕР ============ -->
+		<footer class="footer on-ink">
+			<div class="footer__top-row container">
+				<div class="footer__brand">
+					<span class="footer__logo-text">
+						<span class="footer__logo-line1">panda</span>
+						<span class="footer__logo-line2">print</span>
+					</span>
+					<p class="footer__desc">© 2021 Panda Print. Все права защищены.</p>
+				</div>
+				<nav class="footer__nav">
+					<a href="https://market.yandex.ru/cc/7iJK2f" target="_blank" rel="noopener noreferrer" class="footer__nav-link footer__nav-link--market">
+						<img src="img/yandex-market.svg" alt="" class="footer__market-icon" />
+						Магазин на Яндекс.Маркете
+					</a>
+					<a href="#catalog">Каталог</a>
+					<a href="#contact">Контакты</a>
+					<a href="privacy.html">Политика конфиденциальности</a>
+				</nav>
+			</div>
+			<div class="footer__bottom-row container">
+				<span>Актуальные цены и наличие смотрите на Яндекс.Маркете</span>
+			</div>
+		</footer>
+
+		<!-- Кнопка «наверх» — всегда на экране, появляется после прокрутки -->
+		<button id="backToTop" class="back-to-top" aria-label="Наверх">
+			<i data-lucide="arrow-up"></i>
+		</button>
+
+		<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+		<script src="https://unpkg.com/swiper@14.2.0/swiper-bundle.min.js"></script>
+		<script src="script.js?v=20260915"></script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+data/
+*.log
+
+# Секреты — в репозиторий не попадают никогда.
+.env
+.env.local
+.env.*.local
+!.env.example
