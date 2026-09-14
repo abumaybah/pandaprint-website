@@ -1,0 +1,13 @@
+# Переносы строк — всегда LF, на любой машине и при любом core.autocrlf.
+# Проект деплоится на Linux: bash-скрипт с CRLF падает на первой же строке,
+# а конфиги и код с CRLF засоряют диффы. Современные редакторы на Windows
+# работают с LF без проблем.
+* text=auto eol=lf
+
+# Бинарники — не трогать
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.ico  binary
+*.woff2 binary
