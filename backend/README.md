@@ -363,6 +363,8 @@ git init -b main
 git remote add origin https://github.com/abumaybah/pandaprint-website.git
 git fetch origin
 git reset --hard origin/main
+# Привязываем ветку, иначе git pull без аргументов не знает, откуда тянуть.
+git branch --set-upstream-to=origin/main main
 ```
 
 `reset --hard` приводит **отслеживаемые** файлы в точное соответствие с репозиторием. `.env`, `data/`, `node_modules/`, `dist/` и `logs/` он не трогает — они в `.gitignore`, git их не видит.
@@ -461,13 +463,13 @@ git push
 **[сервер]** — если менялся только фронтенд (`frontend/`), достаточно одной команды, Nginx подхватит файлы сразу:
 
 ```bash
-cd /var/www/pandaprint && git pull
+cd /var/www/pandaprint && git pull --ff-only origin main
 ```
 
 Если менялся бэкенд (`backend/src/`, `package.json`) — ещё пересобрать и перезапустить:
 
 ```bash
-cd /var/www/pandaprint && git pull && cd backend && npm ci && npm run build && pm2 restart pandaprint-api
+cd /var/www/pandaprint && git pull --ff-only origin main && cd backend && npm ci && npm run build && pm2 restart pandaprint-api
 ```
 
 Каталог при рестарте поднимется с диска мгновенно.
@@ -584,7 +586,7 @@ ufw allow 22,80,443/tcp && ufw enable
 ### 5. Обновление
 
 ```bash
-cd /var/www/pandaprint && git pull
+cd /var/www/pandaprint && git pull --ff-only origin main
 cd backend && npm ci && npm run build && pm2 restart pandaprint-api
 ```
 
